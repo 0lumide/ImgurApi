@@ -11,14 +11,14 @@ Include the library in your project via Maven:
 <dependency>
     <groupId>com.github.0lumide</groupId>
     <artifactId>ImgurApi</artifactId>
-    <version>0.0.1</version>
+    <version>v0.0.4-alpha</version>
 </dependency>
 ```
 
 or Gradle
 ```
 dependencies {
-	compile 'com.github.0lumide:ImgurApi:0.0.1'
+    compile 'com.github.0lumide:ImgurApi:v0.0.4-alpha'
 }
 ```
 
