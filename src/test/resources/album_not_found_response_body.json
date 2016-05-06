@@ -1,0 +1,9 @@
+{
+  "data": {
+    "error": "Unable to find an album with the id, fRJhYf.",
+    "request": "/3/album/fRJhYf",
+    "method": "GET"
+  },
+  "success": false,
+  "status": 404
+}
