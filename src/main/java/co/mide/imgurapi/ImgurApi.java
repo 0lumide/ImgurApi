@@ -5,13 +5,13 @@ import co.mide.imgurapi.models.ImgurGallery;
 import co.mide.imgurapi.models.ImgurImage;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.sun.istack.internal.NotNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 
 /**
