@@ -6,7 +6,7 @@
 
     <groupId>co.mide</groupId>
     <artifactId>ImgurAPI</artifactId>
-    <version>v0.0.4-alpha</version>
+    <version>v0.0.5-alpha</version>
 
     <dependencies>
         <dependency>

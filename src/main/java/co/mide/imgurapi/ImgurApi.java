@@ -22,6 +22,9 @@ public class ImgurApi {
     private ImgurApiService apiService;
     private String AUTHORIZATION_HEADER;
     private final String CLIENT_ID;
+    public enum Section {HOT, TOP, USER};
+    public enum Sort {VIRAL, TOP, TIME};
+    public enum Window {DAY, WEEK, MONTH, YEAR, ALL};
 
     /**
      * This constructs a new ImgurApi object which can be used to retrieve info from imgur
@@ -162,9 +165,20 @@ public class ImgurApi {
      * This asynchronously retrieves the the first page of the imgur front page.
      * It retrieves the hot page.
      * @param callback this is the callback that is called when the results are ready
+     * @see #getHot(ImgurCallback, int), {@link #getHotSync()}
      */
     public void getHot(@NotNull ImgurCallback<ImgurGallery> callback){
-        Call<ImgurGallery> call = apiService.getRecentHot(AUTHORIZATION_HEADER);
+        getHot(callback, 0);
+    }
+
+    /**
+     * This asynchronously retrieves the the requested page of the imgur front page.
+     * @param callback this is the callback that is called when the results are ready
+     * @param pageNum the requested page
+     * @see #getHotSync(int)
+     */
+    public void getHot(@NotNull ImgurCallback<ImgurGallery> callback, int pageNum){
+        Call<ImgurGallery> call = apiService.getRecentHot(AUTHORIZATION_HEADER, pageNum);
         call.enqueue(new Callback<ImgurGallery>() {
             @Override
             public void onResponse(Call<ImgurGallery> call, Response<ImgurGallery> response) {
@@ -188,9 +202,21 @@ public class ImgurApi {
      * It retrieves the hot page.
      * @return The first page of the imgur hot gallery, i.e the front page
      * @throws IOException
+     * @see #getHot(ImgurCallback)
      */
     public ImgurGallery getHotSync() throws IOException{
-        Call<ImgurGallery> call = apiService.getRecentHot(AUTHORIZATION_HEADER);
+        return getHotSync(0);
+    }
+
+    /**
+     * This synchronously retrieves the requested page of the imgur front page
+     * @param pageNum the requested page
+     * @return The requested page of the imgur hot gallery, i.e the front page
+     * @throws IOException
+     * @see #getHot(ImgurCallback, int)
+     */
+    public ImgurGallery getHotSync(int pageNum) throws IOException{
+        Call<ImgurGallery> call = apiService.getRecentHot(AUTHORIZATION_HEADER, pageNum);
         return call.execute().body();
     }
 }

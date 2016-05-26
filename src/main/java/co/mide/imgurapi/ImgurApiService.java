@@ -21,6 +21,4 @@ interface ImgurApiService {
     Call<ImgurGalleryAlbum> getGalleryAlbum(@Header("Authorization") String clientID, @Path("id") String albumID);
     @GET("gallery/hot/viral/{page}?showViral=true")
     Call<ImgurGallery> getRecentHot(@Header("Authorization") String clientID, @Path("page") int page);
-    @GET("gallery/hot/viral/0?showViral=true")
-    Call<ImgurGallery> getRecentHot(@Header("Authorization") String clientID);
 }

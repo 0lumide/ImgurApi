@@ -3,6 +3,7 @@ package co.mide.imgurapi;
 import co.mide.imgurapi.models.ImgurAlbum;
 import co.mide.imgurapi.models.ImgurGallery;
 import co.mide.imgurapi.models.ImgurImage;
+import okhttp3.OkHttpClient;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.After;
@@ -44,6 +45,7 @@ public class ImgurApiTest {
         mockWebServer = new MockWebServer();
         imgurApi = new ImgurApi("");
         retrofit = new Retrofit.Builder()
+                .client(new OkHttpClient())
                 .baseUrl(mockWebServer.url("/3/"))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
